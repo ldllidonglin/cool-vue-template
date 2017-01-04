@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0,width=device-width">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>搜狐公众平台</title>
+  </head>
+  <body>
+        <script>
+        (function () {
+            var createStyle = function (cssText) {
+                var document = window.document;
+                var styleTag = document.createElement("style");
+                styleTag.setAttribute("type", "text/css");
+                styleTag.innerHTML = cssText;
+                document.getElementsByTagName("head").item(0).appendChild(styleTag);
+            };
+
+            var ua = window.navigator.userAgent;
+            var isMobile = ua.match(/(Android|iPhone|iPad)/);
+            var width = 750;
+            if (isMobile) {
+                width = window.innerWidth;
+                var height = window.innerHeight;
+                createStyle('html { font-size: ' + width * 75 / 750 + 'px; font-family: "Helvetica"; }');
+                createStyle('.doc { width: ' + width + 'px; height: ' + height+ 'px; }');
+            } else {
+                createStyle('html { font-size: ' + width * 75 / 750 + 'px; font-family: "黑体-简", "Helvetica"; } ');
+                createStyle('textarea, input { font-family: "黑体-简"; } ');
+                createStyle('.doc { width: ' + width + 'px; height: ' + width * 16 / 9 + 'px; }');
+            }
+        }());
+    </script>
+    <div id="app"></div>
+  </body>
+</html>

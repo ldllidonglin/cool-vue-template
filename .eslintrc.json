@@ -1,0 +1,21 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true,
+    "browser": true,
+    "jquery": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "extends": ["eslint:recommended", "vue"],
+  "rules": {
+    "indent": ["warn", 4, {"SwitchCase": 1}],
+    "linebreak-style": ["off"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "no-console": ["off"]
+  },
+  "plugins": ["html", "vue"]
+}
