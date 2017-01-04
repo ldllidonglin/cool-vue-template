@@ -1,5 +1,7 @@
 # cool-vue-template
-vue2.x template with webpack
+A simple Vue 2.x Webpack & vue-loader setup for quick prototyping.
+
+This template is Vue 2.0 compatible.
 ## Usage
 This is a project template for vue-cli.
 ```
