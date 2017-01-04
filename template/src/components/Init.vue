@@ -85,7 +85,7 @@
 
 </style>
 <script>
-import { InfoStat } from './commons/InfoStat'
+import { InfoStat } from './InfoStat'
 export default {
     name: 'Init',
     data () {

@@ -1,4 +1,4 @@
-# ldl-vue-template
+# cool-vue-template
 vue2.x template with webpack
 ## start
 npm run build:dll

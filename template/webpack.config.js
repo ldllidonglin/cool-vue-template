@@ -20,7 +20,10 @@ var plugins = [
         hash: true,
         filename: 'index.html'
     }),
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css'),
+    new CopyWebpackPlugin([{
+        from: 'dll/vendor.dll.js', to: '../dist'
+    }])
 ]
 if (getEnv() !== 'dev') {
     plugins.push(
@@ -32,14 +35,7 @@ if (getEnv() !== 'dev') {
         output: {
             'ascii_only': true
         }
-    }),
-    new CopyWebpackPlugin([{
-        from: 'dist/index.html', to: '../dist/index.vm'
-    }, {
-        from: 'dll/vendor.dll.js', to: '../dist'
-    }, {
-        from: 'src/isohu', to: '../dist/isohu'
-    }])
+    })
   )
 }
 
@@ -80,13 +76,9 @@ var config = {
     },
     resolve: {                                      // resolve 指定可以被 import 的文件后缀
         root: path.join(__dirname, 'src'),
-        extensions: ['', '.js', '.vue'],
-        alias: {
-            IScroll: 'libs/iscroll-probe.js',
-            Util: 'libs/util.js'
-        }
+        extensions: ['', '.js', '.vue']
     },
-    devtool: getEnv=='dev'?null:'source-map',
+    devtool: getEnv === 'dev' ? null : 'source-map',
     plugins: plugins,
     eslint: {
         configFile: './.eslintrc.json'
@@ -103,13 +95,13 @@ var config = {
     }
 }
 
-if(getEnv() ==='dev'){
+if (getEnv() === 'dev') {
     config.output.publicPath = 'http://localhost:8000/'
-}else if(getEnv() ==='rc'){
+} else if(getEnv() ==='rc') {
     config.output.publicPath = 'rc-cdn'
     delete config.vue.postcss
     config.vue.loaders['css'] = ExtractTextPlugin.extract('vue-style-loader', 'css-loader!postcss-loader')
-}else{
+} else{
     delete config.vue.postcss
     config.output.publicPath = 'publish-cdn'
     config.vue.loaders['css'] = ExtractTextPlugin.extract('vue-style-loader', 'css-loader!postcss-loader')

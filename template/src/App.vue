@@ -1,7 +1,7 @@
 <template>
     <div class="doc" id="doc">
         <transition name="fade" mode="out-in">
-            <keep-alive include="">
+            <keep-alive>
                 <router-view class="main-router-view" v-bind:style="{ height:mainRVHeight+'px' }"></router-view>
             </keep-alive>
         </transition>
@@ -17,14 +17,9 @@
 }
 </style>
 <script>
-require('./assets/css/global.css')
-import { InfoStat } from './Components/commons/InfoStat'
+import { InfoStat } from './components/InfoStat'
 export default {
     name: 'app',
-    data () {
-    },
-    methods: {
-    },
     mounted () {
         this.docHeight = document.querySelector('.doc').getBoundingClientRect().height
         // hack bug of the init-height not real height
@@ -54,9 +49,6 @@ export default {
         } else {
             InfoStat(2, 1000.00)
         }
-    },
-    components: {
-        
     }
 }
 </script>

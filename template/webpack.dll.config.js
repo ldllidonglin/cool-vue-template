@@ -5,11 +5,11 @@ var publishPath = 'http://localhost:8000/'
 var getEnv = function () {
     return process.env.NODE_ENV
 }
-if(getEnv() ==='dev'){
+if (getEnv() === 'dev') {
     publishPath = 'http://localhost:8000/'
-}else if(getEnv() ==='rc'){
+} else if (getEnv() === 'rc') {
     publishPath = 'rc-cdn'
-}else{
+} else {
     publishPath = 'publish-cdn'
 }
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env':{
+            'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
@@ -43,7 +43,7 @@ module.exports = {
         /**
          * name
          * dll bundle 输出到那个全局变量上
-         * 和 output.library 一样即可。 
+         * 和 output.library 一样即可。
          */
             name: '[name]_library'
         }),
@@ -51,7 +51,7 @@ module.exports = {
             test: /(\.jsx|\.js)$/,
             compress: {
                 warnings: false
-            },
+            }
         }),
         new HtmlWebpackPlugin({
             template: 'index.html',
